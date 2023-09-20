@@ -1,0 +1,12 @@
+.Wrapper_Login_form {
+    display: flex;
+    flex-direction: column;
+}
+
+.Wrapper_Login_div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
