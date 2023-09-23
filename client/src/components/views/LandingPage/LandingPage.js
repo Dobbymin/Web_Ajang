@@ -1,24 +1,23 @@
 import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { withRouter } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
+// import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 import './LandingPage.css';
+import Auth from '../../../hoc/auth';
 
 function LandingPage() {
-    const navigate = useNavigate();
     useEffect(() => {
-        axios.get('/api/hello').then((response) => {
-            if (response.data.success) {
-                navigate('/');
-            } else {
-                alert('로그아웃 하는 데 실패했습니다.');
-            }
-        });
+        axios.get('/api/hello').then((response) => console.log(response.data));
     }, []);
 
     const onClickHandler = () => {
         axios.get('/api/users/logout').then((response) => {
             console.log(response.data);
+            if (response.data.success) {
+                window.location.href = '/login';
+            } else {
+                alert('로그아웃 하는데 실패 했습니다.');
+            }
         });
     };
 
@@ -31,4 +30,4 @@ function LandingPage() {
     );
 }
 
-export default LandingPage;
+export default Auth(LandingPage, null);

@@ -1,8 +1,10 @@
-import Axios from 'axios';
-import { LOGIN_USER, REGISTER_USER } from './types';
+import axios from 'axios';
+import { LOGIN_USER } from './types';
+import { REGISTER_USER } from './types';
+import { AUTH_USER } from './types';
 
-export function loginUser(dataToSubmit) {
-    const request = Axios.post('/api/users/login', dataToSubmit).then((response) => response.data);
+export function loginUser(dataTosubmit) {
+    const request = axios.post('/api/users/login', dataTosubmit).then((response) => response.data);
 
     return {
         type: LOGIN_USER,
@@ -10,11 +12,20 @@ export function loginUser(dataToSubmit) {
     };
 }
 
-export function registerUser(dataToSubmit) {
-    const request = Axios.post('/api/users/register', dataToSubmit).then((response) => response.data);
+export function registerUser(dataTosubmit) {
+    const request = axios.post('/api/users/register', dataTosubmit).then((response) => response.data);
 
     return {
         type: REGISTER_USER,
+        payload: request,
+    };
+}
+
+export function auth(dataTosubmit) {
+    const request = axios.get('/api/users/auth').then((response) => response.data);
+
+    return {
+        type: AUTH_USER,
         payload: request,
     };
 }
