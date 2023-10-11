@@ -4,7 +4,6 @@ import './App.css';
 import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
-import NotAuthRoutes from './components/NotAuthRoutes';
 import NavBar from './layout/NavBar';
 import Footer from './layout/Footer';
 
