@@ -3,7 +3,7 @@ import { Outlet, Route, Routes } from 'react-router-dom';
 import './App.css';
 import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/LandingPage';
+import RegisterPage from './pages/RegisterPage';
 import NotAuthRoutes from './components/NotAuthRoutes';
 import NavBar from './layout/NavBar';
 import Footer from './layout/Footer';
@@ -29,7 +29,7 @@ function App() {
                 <Route index element={<LandingPage />} />
 
                 {/* 로그인한 사람은 갈 수 없는 경로 */}
-                <Route element={<NotAuthRoutes />}>
+                <Route>
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/register" element={<RegisterPage />} />
                 </Route>
