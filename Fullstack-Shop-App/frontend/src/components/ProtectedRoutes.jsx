@@ -1,7 +1,8 @@
 import React from 'react';
+import { Navigate, Outlet } from 'react-router-dom';
 
 const ProtectedRoutes = () => {
-    return <div>ProtectedRoutes</div>;
+    return;
 };
 
 export default ProtectedRoutes;
