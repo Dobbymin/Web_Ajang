@@ -17,6 +17,7 @@ mongoose
         console.log('연결 완료');
     })
     .catch((err) => {
+        console.log('서버 에러');
         console.error(err);
     });
 
@@ -32,9 +33,13 @@ app.post('/', (req, res) => {
 });
 
 app.use('/users', require('./routes/users'));
+app.use('/products', require('./routes/products'));
 
 app.use((error, req, res, next) => {
     res.status(error.status || 500);
     res.send(error.message || '서버에서 에러가 났습니다.');
 });
+
+app.use(express.static(path.join(__dirname, '../uploads')));
+
 app.listen(port, () => console.log(`Listening on port ${port}`));

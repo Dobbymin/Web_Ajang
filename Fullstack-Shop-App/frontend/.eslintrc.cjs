@@ -20,6 +20,7 @@ module.exports = {
             files: ['*-test.js', '*.spec.js'],
             rules: {
                 'no-unused-expressions': 'off',
+                'react/prop-types': 'off',
             },
         },
     ],

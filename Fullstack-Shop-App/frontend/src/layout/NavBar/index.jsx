@@ -10,7 +10,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="relative z-10 text-white bg-gray-900 ">
+        <section className="relative z-10 text-white bg-gray-900 ">
             <div className="w-full">
                 <div className="flex items-center justify-between mx-5 sm:mx-10 lg:mx-20">
                     {/* logo */}
@@ -32,7 +32,7 @@ const Navbar = () => {
                 {/* mobile nav-items */}
                 <div className="block sm:hidden">{menu && <NavItem mobile />}</div>
             </div>
-        </nav>
+        </section>
     );
 };
 

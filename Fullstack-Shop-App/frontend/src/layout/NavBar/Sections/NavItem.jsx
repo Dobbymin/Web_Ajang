@@ -14,6 +14,7 @@ const routes = [
     { to: '/history', name: '주문목록', auth: true },
 ];
 
+/* eslint-disable react/prop-types */
 const NavItem = ({ mobile }) => {
     const isAuth = useSelector((state) => state.user?.isAuth);
     const cart = useSelector((state) => state.user?.userData?.cart);
@@ -30,7 +31,7 @@ const NavItem = ({ mobile }) => {
     return (
         <ul
             className={`text-md justify-center w-full flex gap-4 ${
-                mobile && 'flex-col bg-gray-900 h-full'
+                mobile && 'flex-row bg-gray-900 h-full'
             } items-center`}
         >
             {routes.map(({ to, name, auth, icon }) => {

@@ -1,8 +1,9 @@
 import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 
-const NotAuthRoutes = ({}) => {
-    // return (<Navigate to={'/'} /> : <Outlet />)
+/* eslint-disable react/prop-types */
+const NotAuthRoutes = ({ isAuth }) => {
+    return isAuth ? <Navigate to={'/'} /> : <Outlet />;
 };
 
 export default NotAuthRoutes;

@@ -46,6 +46,7 @@ const RegisterPage = () => {
             <div className="p-6 bg-white rounded-md shadow-md">
                 <h1 className="text-3xl font-semibold text-center">회원가입</h1>
                 <form className="mt-6" onSubmit={handleSubmit(onSubmit)}>
+                    {/* Email */}
                     <div className="mb-2">
                         <label htmlFor="email" className="text-sm font-semibold text-gray-800">
                             Email
@@ -63,6 +64,7 @@ const RegisterPage = () => {
                         )}
                     </div>
 
+                    {/* name */}
                     <div className="mb-2">
                         <label htmlFor="name" className="text-sm font-semibold text-gray-800">
                             Name
@@ -80,6 +82,7 @@ const RegisterPage = () => {
                         )}
                     </div>
 
+                    {/* password */}
                     <div className="mb-2">
                         <label htmlFor="password" className="text-sm font-semibold text-gray-800">
                             Password
@@ -97,6 +100,7 @@ const RegisterPage = () => {
                         )}
                     </div>
 
+                    {/* submit */}
                     <div className="mt-6">
                         <button
                             type="submit"

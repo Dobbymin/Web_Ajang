@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { registerUser, loginUser, authUser } from './thunkFunctions';
+import { registerUser, loginUser, logoutUser, authUser } from './thunkFunctions';
 import { toast } from 'react-toastify';
 
 const initialState = {
@@ -21,9 +21,12 @@ const userSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
+            /** 회원가입 케이스들 */
             .addCase(registerUser.pending, (state) => {
                 state.isLoading = true;
             })
+
+            /** 회원가입 성공시 */
             .addCase(registerUser.fulfilled, (state) => {
                 state.isLoading = false;
                 toast.info('회원가입을 성공했습니다.');
@@ -63,6 +66,21 @@ const userSlice = createSlice({
                 state.userData = initialState.userData;
                 state.isAuth = false;
                 localStorage.removeItem('accessToken');
+            })
+
+            .addCase(logoutUser.pending, (state) => {
+                state.isLoading = true;
+            })
+            .addCase(logoutUser.fulfilled, (state, action) => {
+                state.isLoading = false;
+                state.userData = initialState.userData;
+                state.isAuth = false;
+                localStorage.removeItem('accessToken');
+            })
+            .addCase(logoutUser.rejected, (state, action) => {
+                state.isLoading = false;
+                state.error = action.payload;
+                state.isAuth = false;
             });
     },
 });
