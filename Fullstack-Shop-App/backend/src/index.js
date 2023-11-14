@@ -25,6 +25,7 @@ app.get('/', (req, res, next) => {
     setImmediate(() => {
         next(new Error('it is an error'));
     });
+    res.send('안녕하세요.2222');
 });
 
 app.post('/', (req, res) => {

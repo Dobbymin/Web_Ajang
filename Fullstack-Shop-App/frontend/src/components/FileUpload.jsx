@@ -15,7 +15,7 @@ const FileUpload = ({ onImageChange, images }) => {
 
         try {
             const response = await axiosInstance.post('/products/image', formData, config);
-            onImageChange([...images, response.data.fileName]);
+            onImageChange([...(images || []), response.data.fileName]);
         } catch (error) {
             console.error(error);
         }
