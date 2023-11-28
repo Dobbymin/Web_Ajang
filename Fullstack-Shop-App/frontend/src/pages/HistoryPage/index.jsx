@@ -27,6 +27,7 @@ const HistoryPage = () => {
                             <td>{item.id}</td>
                             <td>{item.price}</td>
                             <td>{item.quantity}</td>
+                            {/* dayjs로 날짜 포맷 번경 */}
                             <td>{dayjs(item.dateOfPurchase).format('YYYY-MM-DD HH:mm:ss')}</td>
                         </tr>
                     ))}
