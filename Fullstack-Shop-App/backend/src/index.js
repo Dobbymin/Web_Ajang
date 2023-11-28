@@ -1,11 +1,10 @@
 const express = require('express');
 const path = require('path');
-const cors = require('cors');
 const app = express();
+const cors = require('cors');
 const port = 4000;
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-
 dotenv.config();
 
 app.use(cors());
@@ -17,7 +16,6 @@ mongoose
         console.log('연결 완료');
     })
     .catch((err) => {
-        console.log('서버 에러');
         console.error(err);
     });
 
@@ -43,4 +41,6 @@ app.use((error, req, res, next) => {
 
 app.use(express.static(path.join(__dirname, '../uploads')));
 
-app.listen(port, () => console.log(`Listening on port ${port}`));
+app.listen(port, () => {
+    console.log(`${port}번에서 실행이 되었습니다.`);
+});
