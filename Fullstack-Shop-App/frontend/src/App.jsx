@@ -3,7 +3,7 @@ import './App.css';
 import LandingPage from './pages/LandingPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
-import NavBar from './layout/NavBar';
+import Navbar from './layout/NavBar';
 import Footer from './layout/Footer';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -20,32 +20,32 @@ import UploadProductPage from './pages/UploadProductPage';
 
 function Layout() {
     return (
-        <div className="flex flex-col h-screen justify-between">
+        <div className="flex flex-col justify-between h-screen">
             <ToastContainer position="bottom-right" theme="light" pauseOnHover autoClose={1500} />
 
-            <NavBar />
-            <main className="mb-auto w-10/12 max-w-4xl mx-auto">
+            <Navbar />
+            <main className="w-10/12 max-w-4xl mx-auto mb-auto">
                 <Outlet />
             </main>
             <Footer />
         </div>
     );
 }
+
 function App() {
-    const isAuth = useSelector((state) => state.user?.isAuth);
     const dispatch = useDispatch();
+    const isAuth = useSelector((state) => state.user?.isAuth);
     const { pathname } = useLocation();
 
     useEffect(() => {
         if (isAuth) {
             dispatch(authUser());
         }
-    }, [dispatch, pathname, isAuth]);
+    }, [isAuth, pathname, dispatch]);
 
     return (
         <Routes>
             <Route path="/" element={<Layout />}>
-                {/* 로그인과 상관없이 갈 수 있는 경로 */}
                 <Route index element={<LandingPage />} />
 
                 {/* 로그인한 사람만 갈 수 있는 경로 */}

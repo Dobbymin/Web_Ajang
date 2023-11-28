@@ -1,7 +1,6 @@
 import React from 'react';
 import Dropzone from 'react-dropzone';
 import axiosInstance from '../utils/axios';
-import PropTypes from 'prop-types';
 
 const FileUpload = ({ onImageChange, images }) => {
     const handleDrop = async (files) => {
@@ -15,7 +14,7 @@ const FileUpload = ({ onImageChange, images }) => {
 
         try {
             const response = await axiosInstance.post('/products/image', formData, config);
-            onImageChange([...(images || []), response.data.fileName]);
+            onImageChange([...images, response.data.fileName]);
         } catch (error) {
             console.error(error);
         }
@@ -26,11 +25,6 @@ const FileUpload = ({ onImageChange, images }) => {
         let newImages = [...images];
         newImages.splice(currentIndex, 1);
         onImageChange(newImages);
-    };
-
-    FileUpload.propTypes = {
-        onImageChange: PropTypes.func.isRequired, // onImageChange는 함수 타입이고, 필수적으로 전달되어야 함을 명시합니다.
-        images: PropTypes.array.isRequired, // images는 배열 타입이고, 필수적으로 전달되어야 함을 명시합니다.
     };
 
     return (
