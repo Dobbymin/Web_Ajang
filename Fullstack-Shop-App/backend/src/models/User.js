@@ -20,7 +20,6 @@ const userSchema = mongoose.Schema({
         default: 0,
     },
     image: String,
-
     cart: {
         type: Array,
         default: [],
@@ -37,9 +36,9 @@ userSchema.pre('save', async function (next) {
     if (user.isModified('password')) {
         const salt = await bcrypt.genSalt(10);
         const hash = await bcrypt.hash(user.password, salt);
-
         user.password = hash;
     }
+
     next();
 });
 

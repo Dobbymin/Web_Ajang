@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { auth } = require('../middleware/auth');
+const auth = require('../middleware/auth');
 const Product = require('../models/Product');
 const multer = require('multer');
 
@@ -35,6 +35,7 @@ router.get('/:id', async (req, res, next) => {
         });
     }
 
+    // productId를 이용해서 DB에서 productId와 같은 상품의 정보를 가져옵니다.
     try {
         const product = await Product.find({ _id: { $in: productIds } }).populate('writer');
 
@@ -45,6 +46,7 @@ router.get('/:id', async (req, res, next) => {
 });
 
 router.get('/', async (req, res, next) => {
+    // asc 오름차순  , desc 내림차순
     const order = req.query.order ? req.query.order : 'desc';
     const sortBy = req.query.sortBy ? req.query.sortBy : '_id';
     const limit = req.query.limit ? Number(req.query.limit) : 20;
@@ -87,16 +89,6 @@ router.get('/', async (req, res, next) => {
             products,
             hasMore,
         });
-    } catch (error) {
-        next(error);
-    }
-});
-
-router.get('/', async (req, res, next) => {
-    try {
-        const products = await Product.find().populate('writer');
-
-        return res.status(200).json({ products });
     } catch (error) {
         next(error);
     }

@@ -1,19 +1,19 @@
-const { default: mongoose } = require("mongoose");
-const bcrypt = require("bcryptjs");
+const { default: mongoose } = require('mongoose');
+const bcrypt = require('bcryptjs');
 
 const userSchema = mongoose.Schema({
     name: {
         type: String,
-        maxLength: 50
+        maxLength: 50,
     },
     email: {
         type: String,
         trim: true,
-        unique: true
+        unique: true,
     },
     password: {
         type: String,
-        minLength: 5
+        minLength: 5,
     },
     role: {
         type: Number,
@@ -22,14 +22,13 @@ const userSchema = mongoose.Schema({
     image: String,
     cart: {
         type: Array,
-        default: []
+        default: [],
     },
     history: {
         type: Array,
-        default: []
-    }
-})
-
+        default: [],
+    },
+});
 
 userSchema.pre('save', async function (next) {
     let user = this;
@@ -47,8 +46,8 @@ userSchema.methods.comparePassword = async function (plainPassword) {
     let user = this;
     const match = await bcrypt.compare(plainPassword, user.password);
     return match;
-}
+};
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model('User', userSchema);
 
 module.exports = User;

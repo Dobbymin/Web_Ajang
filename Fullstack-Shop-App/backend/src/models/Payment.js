@@ -1,6 +1,6 @@
 const { default: mongoose } = require('mongoose');
 
-const PaymentSchema = mongoose.Schema(
+const paymentSchema = mongoose.Schema(
     {
         user: {
             type: Object,
@@ -17,6 +17,6 @@ const PaymentSchema = mongoose.Schema(
     { timestamps: true }
 );
 
-const Payment = mongoose.model('Product', paymentSchema);
+const Payment = mongoose.model('Payment', paymentSchema);
 
 module.exports = Payment;
